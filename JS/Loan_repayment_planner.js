@@ -14,15 +14,25 @@ const close_dialog = () =>{
 
 const calculate = (event) =>{
 	event.preventDefault();
-	var loanTaken = parseFloat(document.getElementById('priniciple').value)
-	var rateOfIntrest = parseFloat(document.getElementById('interest').value)
-	var deductionAmount = parseFloat(document.getElementById('deduction').value)
-	var timeOfDeduction = parseInt(document.getElementById('time').value)
-	// document.write(loanTaken)
+	var loanTaken = document.getElementById('priniciple').value
+	var rateOfIntrest = document.getElementById('interest').value
+	var deductionAmount = document.getElementById('deduction').value
+	var timeOfDeduction = document.getElementById('time').value
 
-	calculateSummary(loanTaken, rateOfIntrest, deductionAmount, timeOfDeduction);
+	if(loanTaken.length>0 && rateOfIntrest.length>0 && deductionAmount.length>0 && timeOfDeduction.length>0){
+		loanTaken = parseFloat(loanTaken)
+		rateOfIntrest = parseFloat(rateOfIntrest)
+		deductionAmount = parseFloat(deductionAmount)
+		timeOfDeduction = parseInt(timeOfDeduction)
 
-	document.getElementById('short-summary').classList.add('short-summary-animation')
+		calculateSummary(loanTaken, rateOfIntrest, deductionAmount, timeOfDeduction);
+		document.getElementById('short-summary').classList.add('short-summary-animation')
+	} else{
+		document.getElementById('err-container').classList.add('err-animation')
+		setTimeout(()=>{
+			document.getElementById('err-container').classList.remove('err-animation')
+		},3000)
+	}
 }
 
 const calculateSummary = (p, r, dA, dT) =>{
@@ -79,6 +89,10 @@ const calculateSummary = (p, r, dA, dT) =>{
     		<p>${rem_amt}</p>
     	</ul>
     ` 
-    // document.write(rem_amt)
-    // document.write(loanPayOffTime)
+}
+
+const check_input = (e) =>{
+	if(e.keyCode >=48 && e.keyCode < 58)
+		return true
+	return false
 }
