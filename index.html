@@ -35,7 +35,15 @@
 					</span>
 				</div>
 
-				<div class="form-field shorter-input">
+				<div class="form-field longer-input mobile-long">
+					<label for="Deduction">Deduction per Interval:</label>
+					<input type="text" name="Deduction" id="deduction-mobile" onkeypress="return check_input(event)" required>
+					<span class="icon">
+						<img src="https://img.icons8.com/material-outlined/24/null/rupee.png"/>
+					</span>
+				</div>
+
+				<div class="form-field shorter-input laptop">
 					<label for="Rate of Interest">Rate of Interest:</label>
 					<input type="text" name="Rate of Interest" id="interest" onkeypress="return check_input(event)" required>
 					<span class="icon-short">
@@ -45,7 +53,7 @@
 				</div>
 				
 				<div class="form-row-2">
-				<div class="form-field longer-input">
+				<div class="form-field longer-input laptop">
 					<label for="Deduction">Deduction per Interval:</label>
 					<input type="text" name="Deduction" id="deduction" onkeypress="return check_input(event)" required>
 					<span class="icon">
@@ -53,8 +61,16 @@
 					</span>
 				</div>
 
+				<div class="form-field shorter-input mobile-short break-word">
+					<label for="Rate of Interest">Rate of Interest:</label>
+					<input type="text" name="Rate of Interest" id="interest-mobile" onkeypress="return check_input(event)" required>
+					<span class="icon-short">
+						<img src="https://img.icons8.com/ios-glyphs/30/null/percentage-growth.png"/>
+					</span>
+				</div>
+
 				<div class="form-field shorter-input">
-					<label for="Time period">Time Span (months):</label>
+					<label for="Time period">Frequency of pay:</label>
 					<input type="text" name="Time period" id="time" onkeypress="return check_input(event)" required>
 					<span class="icon-short">
 						<img src="https://img.icons8.com/ios-filled/50/null/calendar--v1.png"/>
@@ -70,11 +86,11 @@
 	</section>
 
 	<section class="short-summary main" id="short-summary">
-		<div>
+		<div id="container">
 			<div>
 			<h2 class="summary-heading">SUMMARY</h2>
 			<div id="short-summary-container">
-
+				
 			</div>
 			<div class = "submit">
 				<button class="view-details" onclick="display_details();">View Details</button>

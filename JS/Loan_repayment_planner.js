@@ -16,10 +16,16 @@ const calculate = (event) =>{
 	event.preventDefault();
 	var loanTaken = document.getElementById('priniciple').value
 	var rateOfIntrest = document.getElementById('interest').value
+	var rateOfIntrest_m = document.getElementById('interest-mobile').value
 	var deductionAmount = document.getElementById('deduction').value
+	var deductionAmount_m = document.getElementById('deduction-mobile').value
 	var timeOfDeduction = document.getElementById('time').value
 
-	if(loanTaken.length>0 && rateOfIntrest.length>0 && deductionAmount.length>0 && timeOfDeduction.length>0){
+	if(loanTaken.length>0 && (rateOfIntrest.length>0 || rateOfIntrest_m > 0) && (deductionAmount.length>0 || deductionAmount_m>0) && timeOfDeduction.length>0){
+		if(rateOfIntrest_m != '')
+			rateOfIntrest = rateOfIntrest_m
+		if(deductionAmount_m != '')
+			deductionAmount = deductionAmount_m
 		loanTaken = parseFloat(loanTaken)
 		rateOfIntrest = parseFloat(rateOfIntrest)
 		deductionAmount = parseFloat(deductionAmount)
@@ -47,12 +53,12 @@ const calculateSummary = (p, r, dA, dT) =>{
 
 	while(p>0){
 		time_period = `${loanPayOffTime} th month:`
-		p_amount = `Principal amount: ${p}`
+		p_amount = `Principal amount: <strong>${p.toFixed(2)}</strong>`
 		power = Math.pow((1 + r / 100), (dT/12.00));
         ci = (p*power) - p;
-        interest = `Intrest of this month: ${ci}`
+        interest = `Intrest of this month: <strong>${ci.toFixed(2)}</strong>`
         p = p+ci-dA;
-        p_after_deduction = `Principal amount after deduction of ${dA} amount : ${p}`
+        p_after_deduction = `Principal amount after deduction of ${dA} amount : <strong>${p.toFixed(2)}</strong>`
         totalIntrest += ci;
         loanPayOffTime += dT;
         iterations++;
@@ -74,20 +80,32 @@ const calculateSummary = (p, r, dA, dT) =>{
 	if(loanPayOffTime>=12){
         years = parseInt(loanPayOffTime/12);
         months = loanPayOffTime - (years*12);
-        total_time = `Total time taken to pay the Loan: ${years} years and ${months} month(s)`
+        total_time = `${years} years and ${months} month(s)`
     }
     else{
-    	total_time = `Total time taken to pay the Loan: ${loanPayOffTime} months`
+    	total_time = `${loanPayOffTime} months`
     }
-    total_interest = `Total intrest Paid in the process: ${totalIntrest}`
-    rem_amt = `Amount to be paid in the ${loanPayOffTime} th month is: ${final_amt}`
+    total_interest = `${totalIntrest}`
+    rem_amt = `${final_amt}`
 
     short_container.innerHTML = `
-    	<ul class = "summary-contents">
-    		<p>${total_time}</p>
-    		<p>${total_interest}</p>
-    		<p>${rem_amt}</p>
-    	</ul>
+    	<div class="short-summary-first-half">
+			<div class="short-summary-content">
+				<p class="content-heading">Total Time Required</p>
+				<p><strong>${total_time}</strong></p>
+			</div>
+
+			<div class="short-summary-content">
+				<p class="content-heading">Total Interest</p>
+				<p><strong>${total_interest}</strong></p>
+			</div>
+		</div>
+		<div class="short-summary-second-half">
+			<div class="short-summary-content">
+				<p class="content-heading">Amount to be paid in the ${loanPayOffTime}th month</p>
+				<p><strong>${rem_amt}</strong></p>
+			</div>
+		</div>
     ` 
 }
 

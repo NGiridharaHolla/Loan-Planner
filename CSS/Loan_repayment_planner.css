@@ -129,6 +129,10 @@ input[type="submit"]:hover{
 	left: 95%;
 }
 
+#container{
+	width: 100%;
+}
+
 .icon-short{
 	position: relative;
 }
@@ -183,6 +187,30 @@ input[type="submit"]:hover{
 	justify-content: center;
 	text-align: center;
 	display: flex;
+	margin-bottom: 10px;
+}
+
+.short-summary-first-half{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 30%;
+	margin-bottom: 20px;
+}
+
+.short-summary-second-half{
+	display: flex;
+	justify-content: center;
+}
+
+.short-summary-content p{
+	font-size: 18px;
+	text-align: center;
+}
+
+.content-heading{
+	font-size: 19px !important;
 	margin-bottom: 7px;
 }
 
@@ -258,6 +286,100 @@ input[type="submit"]:hover{
 	justify-content: center;
 	text-align: center;
 	display: flex;
+}
+.laptop{
+	display: flex;
+}
+.mobile-short, .mobile-long{
+	display: none;
+}
+
+/* Media queries */
+@Media only screen and (max-width: 1000px){
+	.main{
+		margin: 7% 15%;
+	}
+
+	.more-details-section{
+		margin: 0 25%;
+		margin-bottom: 20%;
+		margin-top: 15px;
+	}
+
+	.summary-contents-container{
+		padding: 15px;
+	}
+}
+
+@Media only screen and (max-width: 650px){
+	.main{
+		margin: 7% 10%;
+	}
+	.more-details-section{
+		margin: 0 20%;
+		width: 60%;
+	}
+
+}
+
+@Media only screen and (max-width: 550px){
+	.main{
+		margin: 7% 5%;
+	}
+	.form-row-1,.form-row-2{
+		flex-direction: column;
+	}
+
+	.laptop{
+		display: none;
+	}
+
+	.mobile-short, .mobile-long{
+		display: flex;
+	}
+
+	.form-row-2{
+		flex-direction: row;
+	}
+
+	.form-field input{
+		padding: 8px 25px;
+		margin-left: -30px;
+	}
+	.icon-short img{
+		left: 72%;
+	}
+}
+
+@Media only screen and (max-width: 470px){
+	.more-details-section{
+		margin: 0 10%;
+		width: 80%;
+	}
+}
+
+@Media only screen and (max-width: 390px){
+	.break-word label{
+		inline-size: 50px !important;
+	}
+	.icon-short img{
+		left: 50%;
+	}
+	.content-heading{
+		font-size: 16px !important;
+	}
+	.short-summary-content p{
+		font-size: 15px !important;
+	}
+	.detiled-summary-heading{
+		font-size: 20px;
+	}
+	.summary-contents p{
+		font-size: 16px;
+	}
+	#close-btn{
+		padding: 3px 7px;
+	}
 }
 
 @keyframes Left_To_Right{
