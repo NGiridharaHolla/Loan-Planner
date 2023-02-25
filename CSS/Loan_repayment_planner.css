@@ -55,6 +55,18 @@ body::-webkit-scrollbar-thumb {
 	padding: 15px 0 10px 0;
 }
 
+.notes{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: -5%;
+/*	margin-bottom: -50px;*/
+}
+
+.notes-list p{
+	font-size: 17px;
+}
+
 .form-container{
 	display: flex;
 	justify-content: center;
@@ -126,7 +138,7 @@ input[type="submit"]:hover{
 .icon img{
 	position: absolute;
 	top:-28px;
-	left: 95%;
+	left: 90%;
 }
 
 #container{
@@ -349,6 +361,10 @@ input[type="submit"]:hover{
 	.icon-short img{
 		left: 72%;
 	}
+	.notes{
+		margin-top: -1%;
+		padding: 0 10px;
+	}
 }
 
 @Media only screen and (max-width: 470px){
@@ -363,7 +379,7 @@ input[type="submit"]:hover{
 		inline-size: 50px !important;
 	}
 	.icon-short img{
-		left: 50%;
+		left: 35%;
 	}
 	.content-heading{
 		font-size: 16px !important;

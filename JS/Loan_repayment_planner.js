@@ -22,6 +22,7 @@ const calculate = (event) =>{
 	var timeOfDeduction = document.getElementById('time').value
 
 	if(loanTaken.length>0 && (rateOfIntrest.length>0 || rateOfIntrest_m > 0) && (deductionAmount.length>0 || deductionAmount_m>0) && timeOfDeduction.length>0){
+		document.getElementById('notes-container').style.display = 'none';
 		if(rateOfIntrest_m != '')
 			rateOfIntrest = rateOfIntrest_m
 		if(deductionAmount_m != '')
